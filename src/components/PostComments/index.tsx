@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
+import Comment from '../../models/Comment';
 import styles from './PostComments.module.css';
 
-import Comment from '../../models/Comment';
 
-const Post = () => {
+const PostComments = () => {
     const [comments, setComments] = useState<Comment[]>([]);
     const [tempComment, setTempComment] = useState('');
 
@@ -11,14 +11,14 @@ const Post = () => {
         event.preventDefault();
         const newComment = new Comment(comments.length, tempComment);
         setTempComment('');
-        setComments([...comments, newComment]);
+        setComments([...comments, newComment])
     }
 
     return (
         <div>
-            <ul className={styles['post-comments']}>
+            <ul className={styles['post-comments']} data-testid="comentario-postado">
                 {comments.map(({ comment, id }) => (
-                    <li className={styles['post-comment']} key={id}>
+                    <li className={styles['post-comment']} key={id} data-testid="comentario-postado">
                         <p className={styles['post-comment-content']}>
                             {comment}
                         </p>
@@ -35,4 +35,4 @@ const Post = () => {
     );
 }
 
-export default Post;
+export default PostComments;
