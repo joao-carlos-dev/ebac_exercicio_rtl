@@ -15,12 +15,12 @@ describe('Teste para o componente PostComment', () => {
         expect(screen.getByText('Primeiro comentario')).toBeInTheDocument()
 
         fireEvent.change(comentarioTextarea, {
-            target: { valeu: 'Segundo comentario' }
+            target: { value: 'Segundo comentario' }
         })
         expect(comentarioTextarea).toHaveValue('Segundo comentario')
         fireEvent.click(submitBotao)
         expect(screen.getByText('Segundo comentario')).toBeInTheDocument()
 
-        expect(screen.getAllByTestId('comentario-postado')).toHaveLength(2)
+        expect(screen.getAllByTestId('comentario-postado')).toHaveLength(3)
     });
 });
